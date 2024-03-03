@@ -45,7 +45,7 @@ export default function ShoppingPage() {
             
             <ul>
                 <br></br>
-                {products.map(product => ( 
+                {products.map(product => (
                     <li key={product.id}>
                         <div className='prodlist'>
                         <div className='prods'><strong>Product: </strong>{product.data.name}</div>
