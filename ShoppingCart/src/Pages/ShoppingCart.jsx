@@ -27,6 +27,10 @@ export default function ShoppingCart() {
             window.location.reload();
         };
 
+        const getTotalPrice = () => {
+            return products.reduce((total, product) => total + product.data.price, 0);
+        };
+
     return (
         <><div className='headss'>
             <div className="navbarsss" style={{ backgroundColor: "#cccccc" }}>
@@ -39,10 +43,11 @@ export default function ShoppingCart() {
 
         </div>
 
-        <div className='prod'>
-        {products.length === 0 ? (
-            <div className="empty-cart">Your cart is empty!!</div>
-          ) : (
+        <div className='prodtot'>
+            <div className='prod'>
+                {products.length === 0 ? (
+                <div className="empty-cart">Your cart is empty!!</div>
+                ) : (
                 <ul>
                     <br></br>
                     {products.map(product => (
@@ -58,9 +63,15 @@ export default function ShoppingCart() {
                         </li>
                     ))}
 
-                </ul>
-          )}
-            </div></>
+                    </ul>
+                )}
+                </div>
+
+                <div className = 'total'>
+                <h3>Total: {getTotalPrice()}$</h3>
+                </div>
+            </div>
+        </>
     );
   }
 
