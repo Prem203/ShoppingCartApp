@@ -5,3 +5,17 @@
     color: black;
     margin-left: 40%;
 }
+
+.cartlist{
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #000000;
+    list-style: none;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    width: 900px;
+    background-color: #f3f3f3;
+    margin-bottom: 10px;
+}

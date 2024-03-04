@@ -22,7 +22,8 @@ export default function ShoppingCart() {
     }, []);
 
         const removeProductsfromCart = async (productId) => {
-            await firebaseConfigInstance.removeProductsfromCart(productId);
+            await firebaseConfigInstance.removeProductsFromCart(productId);
+            alert("Item removed from Cart!");
             window.location.reload();
         };
 
@@ -46,14 +47,13 @@ export default function ShoppingCart() {
                     <br></br>
                     {products.map(product => (
                         <li key={product.id}>
-                            <div className='prodlist'>
+                            <div className='cartlist'>
                                 <div className='prods'><strong>Product: </strong>{product.data.name}</div>
                                 <strong>Price: </strong>{product.data.price}$
                             </div>
                             <button type="button" className="btn btn-secondary bt" onClick={() => removeProductsfromCart(product)}>
                                 Remove
                             </button>
-                            <br></br>
                             <br></br>
                         </li>
                     ))}

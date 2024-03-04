@@ -58,9 +58,18 @@ body {
 }
 
 .prod{
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .bt{
     margin-left: 10px;
+}
+
+.add{
+    margin-top: 100px;
+    margin-left: 34px;
+}
+
+.empty-cart{
+    margin-top: 80px;
 }

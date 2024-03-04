@@ -24,7 +24,18 @@ export default function ShoppingPage() {
         try {
             await firebaseConfigInstance.addProductsToCart(productName);
             console.log('Product added to cart successfully!');
-            alert("Item added to Cart!");
+            alert("Product added to Cart!");
+        } catch (error) {
+            console.error('Error adding product to cart:', error);
+        }
+    };
+
+    const deleteProduct = async (productName) => {
+        try {
+            await firebaseConfigInstance.deleteProduct(productName);
+            console.log('Product deleted!');
+            alert("Product Deleted!!!");
+            window.location.reload();
         } catch (error) {
             console.error('Error adding product to cart:', error);
         }
@@ -40,11 +51,17 @@ export default function ShoppingPage() {
                     </Link>
                 </div>
             </div>
+            <div>
+            <Link to="/AddProduct">
+            <button type="button" className="btn btn-info add" >
+                Add Product
+            </button>
+            </Link>
+            </div>
 
             <div className='prod'>
             
             <ul>
-                <br></br>
                 {products.map(product => ( 
                     <li key={product.id}>
                         <div className='prodlist'>
@@ -54,13 +71,15 @@ export default function ShoppingPage() {
                         <button type="button" className="btn btn-secondary bt" onClick={() => addProductsToCart(product)}>
                             Add To Cart
                         </button>
+                        <Link to={`/EditProduct?productid=${product.id}&productname=${product.data.name}&productprice=${product.data.price}`}>
                         <button type="button" className="btn btn-secondary bt">
                             Edit
                         </button>
-                        <button type="button" className="btn btn-secondary bt">
+                        </Link>
+                        <button type="button" className="btn btn-secondary bt" onClick={() => deleteProduct(product)}>
                             Delete Product
                         </button>
-                        <br></br>
+\                        <br></br>
                         <br></br>
                     </li>
                 ))}

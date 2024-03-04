@@ -7,6 +7,7 @@ import {
   doc,
   setDoc,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -77,7 +78,27 @@ export default function MyFirebase() {
     return products;
   };
 
-  me.removeProductsfromCart = async (product) => {
+  me.addNewProduct = async (product) => {
+    console.log("Adding new product", product);
+    let response = {};
+    const productsRef = collection(myDatabase, "products");
+    console.log("productsRef", productsRef);
+    try {
+      await setDoc(doc(productsRef), {
+        name: product.name,
+        price: product.price,
+      });
+      console.log("New product added successfully");
+      response = { success: true, message: "New product added successfully" };
+      return response;
+    } catch (error) {
+      console.error("Error adding new product:", error);
+      response = { success: false, message: "Failed to add new product" };
+      return response;
+    }
+  };
+
+  me.removeProductsFromCart = async (product) => {
     console.log("Removing products from cart", product);
     let response = {};
     const cartRef = collection(myDatabase, "cart");
@@ -99,10 +120,66 @@ export default function MyFirebase() {
       return response;
     }
   };
-  
+
+  me.updateProduct = async (product) => {
+    console.log("Updating product", product);
+    const productRef = doc(myDatabase, "products", product.productId);
+    try {
+      await setDoc(productRef, {
+        productName: product.productName,
+        productPrice: product.productPrice,
+      });
+      console.log("Product updated successfully");
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
+
+  me.deleteProduct = async (product) => {
+    console.log("Deleting products", product);
+    const productReference = collection(myDatabase, "products");
+    const cartReference = collection(myDatabase, "cart");
+    try {
+      await deleteDoc(doc(productReference, product.id));
+      await deleteDoc(doc(cartReference, product.id));
+      console.log("Products removed from cart successfully");
+    } catch (error) {
+      console.error("Error removing products from cart:", error);
+    }
+  };
+
+  me.getProductById = async (productId) => {
+    const productRef = doc(myDatabase, "products", productId);
+    try {
+      const productDoc = await getDoc(productRef);
+      if (productDoc.exists()) {
+        return productDoc.data();
+      } else {
+        console.log("No such product exists!");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error getting product:", error);
+      return null;
+    }
+  };
+
+  me.editProduct = async (product) => {
+    console.log("Updating product", product.productID);
+    const productRef = doc(myDatabase, "products", product.productID);
+    console.log("Updating product", product.productID);
+    try {
+      await setDoc(productRef, {
+        name: product.name,
+        price: product.price,
+      });
+      console.log("Product updated successfully");
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
+
   return me;
 }
-
-
 
 export const firebaseConfigInstance = new MyFirebase();
