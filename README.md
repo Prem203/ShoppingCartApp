@@ -1,10 +1,10 @@
 # ShoppingCartApp
 This is a simple shopping cart application, that allows users to add/remove products to the cart, create, update, delete products from the total list of available products. The application makes use of Firestore database to store a list of collections which are:
 
--Products (Database Collection) The list of available products with the attributes (ID, Name, Price, Image). Functionalities:
--Users can create a new product with the attributes (Name, Price, Image)
--Users can update an existing product whose attributes are (Name, Price & Image)
--Users can also delete a product from the database
+- Products (Database Collection) The list of available products with the attributes (ID, Name, Price, Image). Functionalities:
+- Users can create a new product with the attributes (Name, Price, Image)
+- Users can update an existing product whose attributes are (Name, Price & Image)
+- Users can also delete a product from the database
 
 
 ## Getting Started
