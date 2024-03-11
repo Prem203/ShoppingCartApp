@@ -56,8 +56,7 @@ The project is licensed user MIT and is publicly available to all for use.
 ![Screenshot 2024-03-11 031946](https://github.com/Prem203/ShoppingCartApp/assets/84282588/4eeb03f6-f002-4287-9504-a14253373f36)
 
 
-## Web Hosting:![Uploading Screenshot 2024-03-11 031905.png…]()
-![Uploading Screenshot 2024-03-11 031946.png…]()
+## Web Hosting:
 
 The project is currently hosted using Firebase, kindly use this link:
 https://pdpproj-37201.firebaseapp.com/
