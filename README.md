@@ -1,10 +1,11 @@
 # ShoppingCartApp
 This is a simple shopping cart application, that allows users to add/remove products to the cart, create, update, delete products from the total list of available products. The application makes use of Firestore database to store a list of collections which are:
 
-- Products (Database Collection) The list of available products with the attributes (ID, Name, Price, Image). Functionalities:
-- Users can create a new product with the attributes (Name, Price, Image)
-- Users can update an existing product whose attributes are (Name, Price & Image)
+- products (Database Collection) The list of available products with the attributes (Name, Price). Functionalities:
+- Users can create a new product with the attributes (Name, Price)
+- Users can update an existing product whose attributes are (Name, Price)
 - Users can also delete a product from the database
+- Users can also add items to the cart where they can see the total price of the items in the cart.
 
 
 ## Getting Started
@@ -43,6 +44,10 @@ npm install --save firebase
 The project is licensed user MIT and is publicly available to all for use.
 
 ## Video Demo
+
+## Snapshots
+
+![Screenshot 2024-03-11 031715](https://github.com/Prem203/ShoppingCartApp/assets/84282588/5fcaed26-dd91-4f8a-9d11-224216a0d2bd)
 
 ## Web Hosting:
 The project is currently hosted using Firebase, kindly use this link:
